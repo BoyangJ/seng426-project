@@ -1,0 +1,37 @@
+<div ng-cloak>
+    <section id="media">
+	<div class="col-md-12">
+            <div class="col-md-8" id="partner">
+            </div>
+	</div>
+		<div has-any-role="EMPLOYEE, MANAGER, ADMIN" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-4 no-padding-left">
+					<button class="btn btn-primary" ui-sref="blog-post" >
+						<span class="glyphicon glyphicon-plus"></span>
+						<span>
+							Manage Media
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+        <div class="container">
+            <h1>Media</h1>
+            <hr/>
+            <div class="col-md-8">
+                <h3 ng-if="vm.posts['NEWS'].length > 0">News</h3>
+                <ul ng-repeat="newsPost in vm.posts['NEWS'] track by newsPost.id">
+					<li><a ui-sref="blog-post-detail({id:newsPost.id})">{{newsPost.title}}</a></li>
+				</ul>
+                <h3 ng-if="vm.posts['BLOG'].length > 0">Blog</h3>
+                <ul ng-repeat="blogPost in vm.posts['BLOG'] track by blogPost.id">
+					<li><a ui-sref="blog-post-detail({id:blogPost.id})">{{blogPost.title}} – by {{blogPost.author.firstName + " " + blogPost.author.lastName}}</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <img src="content/images/4.jpg" class="img-responsive">
+            </div>
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+</div>

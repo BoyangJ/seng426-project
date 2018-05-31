@@ -1,0 +1,68 @@
+<form name="pdwGenForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySaturnVaultPdwGenLabel">Generate Password</h4>
+    </div>
+    <div class="modal-body">
+		<h4>Include:</h4>
+        <div class="form-group">
+            <input type="checkbox" class="col-form-control" name="lower" id="field_lower"
+				   ng-model="vm.genOptions.lower"/>
+            <label class="col-control-label" for="field_lower">Lowercase characters (a-z)</label>
+        </div>
+		<div class="form-group">
+            <input type="checkbox" class="col-form-control" name="upper" id="field_upper"
+				   ng-model="vm.genOptions.upper"/>
+            <label class="col-control-label" for="field_upper">Uppercase characters (A-Z)</label>
+        </div>
+		<div class="form-group">
+            <input type="checkbox" class="col-form-control" name="digits" id="field_digits"
+				   ng-model="vm.genOptions.digits"/>
+            <label class="col-control-label" for="field_digits">Digits (0-9)</label>
+        </div>
+		<div class="form-group">
+            <input type="checkbox" class="col-form-control" name="special" id="field_special"
+				   ng-model="vm.genOptions.special"/>
+            <label class="col-control-label" for="field_special">Special Characters (!@#$%-_)</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" class="col-form-control" name="special" id="field_repetition"
+                   ng-model="vm.genOptions.repetition"/>
+            <label class="col-control-label" for="field_repetition">Prevent Repeated Characters</label>
+        </div>
+		<div class="form-group">
+            <label class="col-control-label" for="field_length">Length</label>
+            <input type="number" class="col-form-control" name="length" id="field_length"
+				   ng-model="vm.genOptions.length" min="0" required />
+            <div ng-show="pdwGenForm.length.$invalid">
+                <p class="help-block" ng-show="pdwGenForm.length.$error.required">
+                    This field is required.
+                </p>
+				<p class="help-block" ng-show="pdwGenForm.length.$error.number">
+                    Not a valid number.
+                </p>
+            </div>
+        </div>
+		<div class="clearfix">
+			<button type="button" ng-click="vm.generate()" ng-disabled="pdwGenForm.$invalid"
+					class="btn btn-primary" style="float: right">
+				<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span>Generate</span>
+			</button>
+		</div>
+
+		<h4>Password</h4>
+		<div class="form-group">
+            <input type="text" class="form-control" name="password" id="field_password" ng-model="vm.password"/>
+        </div>
+		<!--<label><input style="width: 50px;" maxlength="3" id="mindigits" type="text">Minimum Numeric Characters:</label>-->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="pdwGenForm.$invalid || !vm.password" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Use</span>
+        </button>
+    </div>
+</form>

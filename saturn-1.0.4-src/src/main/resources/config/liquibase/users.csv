@@ -1,0 +1,15 @@
+id;login;password_hash;first_name;last_name;email;activated;lang_key;role;created_by;last_modified_by
+1;system@saturn.com;$2a$10$mE.qmcV0mFU5NcKh73TZx.z4ueI/.bDWbj0T1BYyqP481kGGarKLG;System;" ";system@saturn.com;1;en;ADMIN;system;system
+2;admin@saturn.com;$2a$10$nMb3thKma/cllKLbJL0uvO9Iq7ruv3AWSrk3rCV0Q.92sHAhIQ68q;Administrator;" ";admin@saturn.com;1;en;ADMIN;system;system
+3;user@saturn.com;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;User;" ";user@saturn.com;1;en;USER;system;system
+4;p.soell@saturn.com;$2a$10$lDqex/jus7vrrnvztMAkIeW8DDh6Py4qJ0b74qYiBrH0ykDy/SA6a;Peter;Soell;p.soell@saturn.com;1;en;MANAGER;admin;admin
+5;p.graf@saturn.com;$2a$10$0SdoYvX1ZExaFxLYo4BzquLpfxUCO7zY2v4MX2j/RaMikfl0WTsJ6;Patrick Oliver;Graf;p.graf@saturn.com;1;en;MANAGER;admin;admin
+6;b.dietrich@saturn.com;$2a$10$WT/yEZx4ctvsGF.jJx8UY.ZBdjBpnJwYEVROTjjwWHdL2NumM5H0a;Beate;Dietrich;b.dietrich@saturn.com;1;en;MANAGER;admin;admin
+7;j.oberoi@saturn.com;$2a$10$LrTP69Zrj.F.7ikWR3H38.3Z.YzlOPb2IxAbjFPoiySbvMPNMoyA6;Jon;Oberoi;j.oberoi@saturn.com;1;en;MANAGER;admin;admin
+8;a.obaidat@saturn.com;$2a$10$lcVys1wo5LSJ9ai7.i7C5O0Mjd16CD8VtEtOnh7xtvdJkVTo4iZ56;Anaya;Obaidat;a.obaidat@saturn.com;1;en;MANAGER;admin;admin
+9;c.kustarz@saturn.com;$2a$10$bXGcCdWJdbt4CKbQsIcbAeZZb1baN.b7zSJniteE6iOd5hBiRnYdW;Chester;Kustarz;c.kustarz@saturn.com;1;en;MANAGER;admin;admin
+10;j.pesci@saturn.com;$2a$10$bZym4C25zdoSWWxBoBGxFOwgs8Rfr9xSCPp8.wJzIQQmoYKLDhUim;Joe;Pesci;j.pesci@saturn.com;1;en;MANAGER;admin;admin
+11;l.arel@saturn.com;$2a$10$q1o35pMpe8zo5BrUXbuitOx4WIlD.t8P2gBDJwQkJuiTRPE7Fziqm;Lucia;Arel;l.arel@saturn.com;1;en;MANAGER;admin;admin
+12;w.zhang@saturn.com;$2a$10$7IyMeEeN3GUQ3UhbN304K.0FWs1CkG1fFo0pRrD4RaOiKW8YpNbjS;Wei;Zhang;w.zhang@saturn.com;1;en;EMPLOYEE;admin;admin
+13;a.sahraoui@saturn.com;$2a$10$cRNepiQYjMdL2SADQQaEy.iOkIbDJulUzgGRXoLnwubuRA1plyy4.;Adbulah;Sahraoui;a.sahraoui@saturn.com;1;en;EMPLOYEE;admin;admin
+14;a.coulibaly@saturn.com;$2a$10$vOoH.M/4E/8OP7.3J0Dyx..WjSq3rmVsJUvKqfiHwZWR9p9axWs3q;Ayesha;Coulibaly;a.coulibaly@saturn.com;1;en;EMPLOYEE;admin;admin

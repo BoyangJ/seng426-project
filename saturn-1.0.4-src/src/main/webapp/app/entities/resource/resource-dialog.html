@@ -1,0 +1,32 @@
+<form name="uploadForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myResourceLabel">Upload a Resource</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+		<h5>Select a file for upload</h5>
+		<div class="row form-group">
+			<label class="control-label col-xs-3">File</label>
+			<div class="col-xs-9">
+				<input type="file" style="width: 100%" file-upload name="uploadFile" id="uploadFile" ng-model="uploadFile" required/>
+			</div>
+			<div class="col-xs-12">
+				<div ng-show="uploadForm.uploadFile.$dirty && uploadForm.uploadFile.$invalid">
+					<p class="help-block" ng-show="uploadForm.uploadFile.$error.required">
+						The file is required.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+		</button>
+		<button type="submit" ng-disabled="uploadForm.$invalid || vm.loadingFile" class="btn btn-primary">
+			<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+		</button>
+	</div>
+</form>
