@@ -1,0 +1,120 @@
+<div ng-cloak>
+    <section id="partner">
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="col-md-8">
+                <div class="blog-content">
+                    <h1>{{vm.blogPost.title}}</h1>
+                    <hr/>
+                    <ul>
+                        <li ng-if="vm.blogPost.type != 'NEWS'">Author: {{vm.blogPost.author.firstName + " " + vm.blogPost.author.lastName}}</li>
+                        <li>Posted: {{vm.blogPost.createdDate| date:"medium"}}</li>
+                    </ul>
+                    <div ng-bind-html="vm.htmlContent" id="blog-post-content"></div>
+                </div>
+            </div>
+            <aside class="col-md-4">
+                <div class="widget search">
+
+                    <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+
+                </div><!--/.search-->
+
+                <div has-any-role="EMPLOYEE, MANAGER, ADMIN" class="widget categories">
+                    <h3>Actions</h3>
+					<button type="button" ui-sref="blog-post-detail.edit({id:vm.blogPost.id})" class="btn btn-primary">
+						<span class="glyphicon glyphicon-pencil"></span>
+						<span class="hidden-xs hidden-sm"> Edit</span>
+					</button>
+					<button type="button" ui-sref="blog-post.delete({id:vm.blogPost.id})" class="btn btn-danger">
+						<span class="glyphicon glyphicon-remove-circle"></span>
+						<span class="hidden-xs hidden-sm"> Delete</span>
+					</button>
+                </div>
+            </aside>
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+	<section id="comments" class="comments">
+		<div class="container">
+			<hr>
+			<div class="col-md-8">
+				<h2>Comments</h2>
+				<div ng-if="vm.comments.length === 0">No comments yet.</div>
+				<div class="panel panel-default" ng-repeat="comment in vm.comments">
+					<div class="panel-heading" id="comment-{{comment.id}}">
+						<label>{{comment.name}}</label> • <span>{{comment.createdDate| date: "medium"}}</span>
+						<div has-any-role="EMPLOYEE, MANAGER, ADMIN" style="float: right">
+							<button type="button" ui-sref="comment-delete({cid:comment.id})" class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+					</div>
+					<div class="panel-body">
+						<pre ng-bind-html="comment.htmlContent" style="margin: 0; padding: 0; background-color: transparent; border: none; font-family: unset; font-size: 14px;"></pre>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="container">
+            <div class="col-md-8">
+				<h3>Leave a Comment</h3>
+				<form name="commentForm" role="form" novalidate ng-submit="vm.addComment()" show-validation>
+					<jhi-alert-error></jhi-alert-error>
+					<div class="form-group">
+						<label class="control-label" for="field_name">Name</label>
+						<input type="text" class="form-control" name="name" id="field_name"
+							   ng-model="vm.comment.name" required ng-minlength="4" ng-maxlength="20" />
+						<div ng-show="commentForm.name.$invalid">
+							<p class="help-block" ng-show="commentForm.name.$error.required">
+								This field is required.
+							</p>
+							<p class="help-block" ng-show="commentForm.name.$error.minlength" translate-value-min="4">
+								This field is required to be at least 4 characters.
+							</p>
+							<p class="help-block" ng-show="commentForm.name.$error.maxlength">
+								This field cannot be longer than 20 characters.
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="field_email">Email <span class="help-block" style="display: inline;font-weight: 300;font-size: 13px;">(will not be visible)</span></label>
+						<input type="text" class="form-control" name="email" id="field_email"
+							   ng-model="vm.comment.email" required />
+						<div ng-show="commentForm.email.$invalid">
+							<p class="help-block" ng-show="commentForm.email.$error.required">
+								This field is required.
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="field_content">Comment</label>
+						<textarea type="text" class="form-control" name="content" id="field_content" rows="5"
+								  ng-model="vm.comment.content" required ng-minlength="5" ng-maxlength="500" ></textarea>
+						<div ng-show="commentForm.content.$invalid">
+							<p class="help-block" ng-show="commentForm.content.$error.required">
+								This field is required.
+							</p>
+							<p class="help-block" ng-show="commentForm.content.$error.minlength" translate-value-min="5">
+								This field is required to be at least 5 characters.
+							</p>
+							<p class="help-block" ng-show="commentForm.content.$error.maxlength">
+								This field cannot be longer than 500 characters.
+							</p>
+						</div>
+						<div>
+							Formatting: Use [b]text[/b] for <b>bold</b>, [i]text[/i] for <i>italics</i>, [url]url[/url] for <a href="{{window.location.href}}">link</a>.
+						</div>
+						
+					</div>
+					<button type="submit" ng-disabled="commentForm.$invalid || vm.isSaving" class="btn btn-primary">
+						<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Comment</span>
+					</button>
+				</form>
+				<br>
+			</div>
+		</div>
+    </section>
+</div>

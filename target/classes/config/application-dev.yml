@@ -1,0 +1,106 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+
+spring:
+    profiles:
+        active: dev
+        include: swagger
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/saturn?useUnicode=true&characterEncoding=utf8&useSSL=false  #Replace with your database url
+        name:
+        username: root  #Replace this field with your database username.
+        password: root  #Replace this field with your database password.
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: true
+        properties:
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: true
+            hibernate.javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
+            hibernate.javax.cache.uri: ${spring.cache.jcache.config}
+            hibernate.cache.region.factory_class: com.saturn.config.jcache.SpringCacheRegionFactory
+    cache:
+        jcache:
+            config: ehcache.xml
+    mail:
+        host: smtp.saturn.com		#Replace this field with your email smtp server.
+        port: 587
+        username: noreply@saturn.com	#Replace this field with your email username.
+        password: emailpassword		#Replace this field with your email password.
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.saturn.com
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+liquibase:
+    contexts: dev
+
+server:
+    port: 8080	#Replace this field with your desired port number
+
+# ===================================================================
+# JHipster specific properties
+# ===================================================================
+
+jhipster:
+    cache: # Hibernate 2nd level cache, used by CacheConfiguration
+        ehcache:
+            maxBytesLocalHeap: 16M
+    security:
+        rememberMe:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 69d32be1516cae568e43027897a64d55898dd3b4
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: saturnsecsys@gmail.com
+        baseUrl: http://www.saturn.ca
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        graphite:
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: saturn
+        prometheus:
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            reportFrequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queueSize: 512
